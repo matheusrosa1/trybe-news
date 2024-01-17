@@ -1,3 +1,4 @@
+import useNewsApi from "../hooks/useNewsApi"
 import NewsContext from "./NewsContext"
 
 type NewsProviderProps = {
@@ -5,8 +6,13 @@ type NewsProviderProps = {
 }
 
 function NewsProvider ({children} : NewsProviderProps) {
+  const {news, error, loading} = useNewsApi();
 
-  const value = {}
+  const value = {
+    news,
+    error,
+    loading,
+  }
 
   return (
     <NewsContext.Provider value={value}>
